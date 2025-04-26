@@ -7,8 +7,10 @@ struct WakeUpView: View {
     var body: some View {
         ZStack {
             VStack {
-                Text("Cancel or save alarm")
-                Text("Toggle an alarm")
+                CancelSaveAlarm(currentAlarmIndex: currentAlarmIndex, alarmModel: $alarmModel)
+                    .padding(.horizontal)
+                    .tint(.red)
+                AlarmToggleView(alarmEnable: $alarmModel.alarmEnabled)
                 Divider()
                 HStack {
                     Grid {
