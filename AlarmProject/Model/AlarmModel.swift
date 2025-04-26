@@ -33,4 +33,36 @@ struct AlarmModel: Identifiable, Equatable {
                    activity: activities[0],
                    colorIndex: 0)
     }
+    
+    static func dummyAlarm() -> [AlarmModel] {
+        [
+            AlarmModel(title: "Activity completed.",
+                       body: "Have a great day!",
+                       repeats: false,
+                       sound: .lagrima,
+                       alarmEnabled: true,
+                       start: Date(),
+                       end: Date().addHourToDate(numOfHours: 3, numOfMinutes: 15),
+                       activity: "moon.zzz.fill",
+                       colorIndex: 0),
+            AlarmModel(title: "Yo Yo.",
+                       body: "Peace!",
+                       repeats: false,
+                       sound: .lagrima,
+                       alarmEnabled: true,
+                       start: Date(),
+                       end: Date().addHourToDate(numOfHours: 20, numOfMinutes: 30),
+                       activity: "sun.max.fill",
+                       colorIndex: 1),
+            AlarmModel(title: "Another title.",
+                       body: "Peace x2",
+                       repeats: false,
+                       sound: .lagrima,
+                       alarmEnabled: false,
+                       start: Date(),
+                       end: Date().addHourToDate(numOfHours: 7, numOfMinutes: 0),
+                       activity: "figure.skiing.downhill",
+                       colorIndex: 2)
+        ].sorted(by: {$0.endTimeModel < $1.endTimeModel})
+    }
 }
