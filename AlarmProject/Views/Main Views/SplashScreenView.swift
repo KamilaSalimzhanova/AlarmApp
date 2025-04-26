@@ -9,22 +9,41 @@ struct SplashScreenView: View {
             MainView()
         } else {
             ZStack {
-                FourCoolCircles(color1: AppColor.yellow.color, color2: Color.clear)
                 VStack {
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("Hello There")
-                        Text("let's add an alarm")
+                        Group {
+                            CoolTextView(text: LocalizedStringKey("Hello There"), size: fontSize)
+                            CoolTextView(text: LocalizedStringKey("let's add an alarm"), size: fontSize)
+                        }
+                        .multilineTextAlignment(.leading)
                     }
-                    .multilineTextAlignment(.leading)
                     .padding()
                     .onAppear {
                         withAnimation(.easeIn(duration: 1.5)) {
                             opacity = 1.0
-                            fontSize = 36.0
+                            fontSize = 20.0
                         }
                     }
                     Spacer()
-                    Text("Some image")
+                    Image("WelcomeIllustration")
+                        .resizable()
+                        .scaledToFit()
+                        .opacity(opacity)
+                    Spacer()
+                }
+                FourCoolCircles(color1: AppColor.blue.color, color2: Color.clear)
+            }
+            .opacity(opacity)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                    withAnimation {
+                        isActive = true
+                    }
+                }
+            }
+            .onTapGesture {
+                withAnimation {
+                    isActive = true
                 }
             }
         }

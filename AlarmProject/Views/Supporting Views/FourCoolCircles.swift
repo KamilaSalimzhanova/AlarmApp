@@ -26,7 +26,7 @@ struct FourCoolCircles: View {
             }
         }
         .onReceive(timer) { _ in
-            withAnimation(.easeIn(duration: 20)) {
+            withAnimation(.easeIn(duration: 10)) {
                 for i in 0..<xOffsets.count {
                     xOffsets[i] = Double.random(in: -300...300)
                     yOffsets[i] = Double.random(in: -300...300)
