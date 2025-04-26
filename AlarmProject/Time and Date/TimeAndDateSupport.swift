@@ -20,8 +20,8 @@ extension Date {
         self.addingTimeInterval(TimeInterval(numOfMinutes*60+numOfHours*3600))
     }
     
-    func subtract(lhs: Date, rhs: Date) -> TimeInterval {
-        lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    func subtract(rhs: Date) -> TimeInterval {
+        self.timeIntervalSince(rhs)
     }
     
     func formatDate() -> String {

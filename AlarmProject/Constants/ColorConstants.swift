@@ -14,6 +14,6 @@ enum AppColor: String {
     case yellow = "Yellow"
     
     var color: Color { Color(self.rawValue) }
-    var gradColorList: [Color] { [AppColor.yellow.color, AppColor.pink.color, AppColor.purple.color, AppColor.blue.color] }
-    var mainColors: [Color] { [AppColor.pink.color,  AppColor.purple.color, AppColor.blue.color, AppColor.yellow.color, AppColor.lightGray.color, AppColor.black.color] }
+    static var gradColorList: [Color] { [AppColor.yellow.color, AppColor.pink.color, AppColor.purple.color, AppColor.blue.color] }
+    static var mainColors: [Color] { [AppColor.pink.color,  AppColor.purple.color, AppColor.blue.color, AppColor.yellow.color, AppColor.lightGray.color, AppColor.black.color] }
 }
