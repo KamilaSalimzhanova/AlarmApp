@@ -3,7 +3,6 @@ import Foundation
 extension Date {
     
     // MARK: - public functions
-    // Function to convert the time of the day to a percentage of the day
     func toPercent() -> CGFloat {
         let components = self.gateTimeComponents()
         let hoursInDay: CGFloat = CGFloat(components.hour) / 24
@@ -21,11 +20,24 @@ extension Date {
         self.addingTimeInterval(TimeInterval(numOfMinutes*60+numOfHours*3600))
     }
     
+    func subtract(lhs: Date, rhs: Date) -> TimeInterval {
+        lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+    
+    func formatDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy (HH:mm)"
+        return formatter.string(from: self)
+    }
+    
+    func dateToTimeModel() -> TimeModel {
+        let components = self.gateTimeComponents()
+        return TimeModel(hours: components.hour, minutes: components.minute)
+    }
+    
     // MARK: - private functions
-    // Function to get the components (hour, minute, day, month, year) from a date
     private func gateTimeComponents() -> (hour: Int, minute: Int, day: Int, month: Int, year: Int) {
         let components = Calendar.current.dateComponents([.hour, .minute, .day, .month, .year], from: self)
         return (hour: components.hour ?? 0, minute: components.minute ?? 0, day: components.day ?? 0, month: components.month ?? 0, year: components.year ?? 0)
     }
-    
 }
