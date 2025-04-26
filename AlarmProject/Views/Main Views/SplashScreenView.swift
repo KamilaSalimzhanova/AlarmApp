@@ -9,7 +9,7 @@ struct SplashScreenView: View {
             MainView()
         } else {
             ZStack {
-                FourCoolCircles(color1: AppColor.blue.color, color2: Color.clear)
+                FourCoolCircles(color1: AppColor.yellow.color, color2: Color.clear)
                 VStack {
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Hello There")

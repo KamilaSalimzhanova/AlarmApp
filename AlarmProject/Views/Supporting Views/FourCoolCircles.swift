@@ -3,7 +3,7 @@ import SwiftUI
 struct FourCoolCircles: View {
     @State private var xOffsets: [CGFloat] = Array(repeating: 0, count: 4)
     @State private var yOffsets: [CGFloat] = Array(repeating: 0, count: 4)
-    @State private var timer = Timer.publish(every: 1, on: .main, in: .common)
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var color1: Color = AppColor.darkYellow.color
     var color2: Color = AppColor.lightYellow.color
@@ -23,6 +23,14 @@ struct FourCoolCircles: View {
                         x: circlesData[index].baseX + xOffsets[index],
                         y: circlesData[index].baseY + yOffsets[index]
                     )
+            }
+        }
+        .onReceive(timer) { _ in
+            withAnimation(.easeIn(duration: 20)) {
+                for i in 0..<xOffsets.count {
+                    xOffsets[i] = Double.random(in: -300...300)
+                    yOffsets[i] = Double.random(in: -300...300)
+                }
             }
         }
     }
