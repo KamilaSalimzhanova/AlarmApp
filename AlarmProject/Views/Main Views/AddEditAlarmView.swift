@@ -12,6 +12,7 @@ struct AddEditAlarmView: View {
                 if showYouDidItView {
                     YouDidItView()
                 }
+                WakeUpView(alarmModel: $alarmModel, currentAlarmIndex: currentAlarmIndex)
             }
         }
         .onAppear {
